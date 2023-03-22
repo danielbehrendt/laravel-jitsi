@@ -30,7 +30,9 @@ class LaravelJitsi
             'sub' => config('laravel-jitsi.domain'),
             'exp' => now()->addMinutes(5)->timestamp,
             'room' => $room,
-            'user' => $user->filter()->all(),
+            'context' => [
+                'user' => $user->filter()->all(),
+            ]
         ];
 
         return JWT::encode($payload, config('laravel-jitsi.secret'));
