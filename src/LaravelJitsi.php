@@ -22,6 +22,8 @@ class LaravelJitsi
             'name' => $user->getJitsiName(),
             'email' => $user->getJitsiEmail(),
             'avatar' => $user->getJitsiAvatar(),
+            'affiliation' => $user->isSuperAdmin() ? 'owner' : 'member',
+            'lobby_bypass' => $user->isSuperAdmin(),            
         ]);
 
         $payload = [
